@@ -9,25 +9,21 @@ const NAME_SCHEMA = yup
   );
 
 const USER_CREATE_SCHEMA = yup.object({
-  firstName: NAME_SCHEMA.required("firstName is required field"),
-  lastName: NAME_SCHEMA.required("lastName is required field"),
-  email: yup
-    .string()
-    .trim()
-    .email("email field must be valid email")
-    .required("email is required field"),
-  age: yup.number().min(0).max(120).required("age is required field"),
+  firstName: NAME_SCHEMA.required(),
+  lastName: NAME_SCHEMA.required(),
+  email: yup.string().trim().email().required(),
+  age: yup.number().min(0).max(120).required(),
   gender: yup
     .string()
     .matches(/male|female|other/, "gender must be 'male', 'female' or 'other'")
-    .required("gender is required field"),
+    .required(),
   password: yup
     .string()
     .matches(
       /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)^\w{8,64}$/,
       "Your password must be at least 8 characters long, be of mixed case and also contain a digit or symbol."
     )
-    .required("password is required field"),
+    .required(),
 });
 
 const USER_UPDATE_SCHEMA = yup.object({
@@ -35,7 +31,9 @@ const USER_UPDATE_SCHEMA = yup.object({
   lastName: NAME_SCHEMA,
   email: yup.string().trim().email("email field must be valid email"),
   age: yup.number().min(0).max(120),
-  gender: yup.string().matches(/male|female|other/, "gender must be correct"),
+  gender: yup
+    .string()
+    .matches(/male|female|other/, "gender must be 'male', 'female' or 'other'"),
   password: yup
     .string()
     .matches(

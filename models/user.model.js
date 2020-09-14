@@ -8,17 +8,9 @@ class User {
    * @param {string} fields.firstName
    * @param {string} fields.lastName
    * @param {string} fields.email
-   * @param {number} fields.age
-   * @param {string} fields.gender
-   * @param {string} fields.password
-   * 
-   * 
-   * firstName: string;
-    lastName: string;
-    email: string;
-    age: number (0...120);
-    gender: string ('male' | 'female' | 'other');
-    password: string (password must be at least 8 characters long, be of mixed case and also contain a digit or symbol. );
+   * @param {number} fields.age - (0...120)
+   * @param {string} fields.gender - ('male' | 'female' | 'other')
+   * @param {string} fields.password - (password must be at least 8 characters long, be of mixed case and also contain a digit or symbol. )
    */
   constructor(fields) {
     for (const key in fields) {
@@ -59,4 +51,3 @@ User.remove = function (userId) {
 };
 
 module.exports = User;
-console.log("db", db.toString());

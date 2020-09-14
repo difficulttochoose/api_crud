@@ -4,9 +4,7 @@ const { validateUser } = require("./middleware");
 // create express app
 const app = express();
 
-app.use(express.json()); // parse Content-Type: application/json on all HTTP METHODS and all URI
-
-// routing
+app.use(express.json()); // parse
 
 app.post("/user", validateUser.validateUserOnCreate, UserController.createUser); // create
 app.get("/users/:userId", UserController.getUser); //read
